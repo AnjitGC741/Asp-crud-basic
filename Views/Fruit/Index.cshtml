@@ -1,0 +1,31 @@
+﻿@model List<Fruits>
+@{
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+    int sn = 1;
+}
+<h1>List of Fruits</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>SN</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var data in Model)
+        {
+            <tr>
+                <td>@(sn++)</td>
+                <td>@(data.Name)</td>
+                <td>@(data.price)</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Fruit" asp-route-id="@(data.Id)" class="btn btn-warning">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a asp-action="Details" asp-controller="Fruit" asp-route-id="@(data.Id)" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
